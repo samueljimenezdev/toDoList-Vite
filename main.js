@@ -6,5 +6,3 @@ import todoStore from './src/store/todo.store.js'
 App('#app');
 
 todoStore.initStore();
-//todoStore.deleteCompletedTodos()
-console.log(todoStore.getTodos())

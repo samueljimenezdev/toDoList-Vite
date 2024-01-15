@@ -6,7 +6,6 @@ const Filters = {
     Pending: 'Pending'
 }
 
-
 const state = {
     todos:[
         new Todo('Levantarse'),
@@ -15,8 +14,6 @@ const state = {
     ],
     filter: Filters.All
 }
-
-
 
 const initStore = () => {
     console.log('InitStore');
@@ -35,7 +32,7 @@ const addTodo = (description) =>{
 const getTodos = (filter = Filters.All) => {
     switch( filter ){
         case Filters.All:
-            return {...state.todos};
+            return [...state.todos];
         case Filters.Completed:
             return state.todos.filter(todo => todo.done);
         case Filters.Pending:
@@ -46,7 +43,13 @@ const getTodos = (filter = Filters.All) => {
 }
 
 const toggleTodo = (todoId) => {
-    throw new Error('Not implemented');
+    
+    state.todos = state.todos.map(todo => {
+        if(todo.id === todoId){
+            todo.done = !todo.done;
+        }
+        return todo;
+    })
 }
 
 const deleteTodo = (todoId) =>{
